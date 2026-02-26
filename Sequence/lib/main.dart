@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'lobby_screen.dart';
 
 final supabase = Supabase.instance.client;
 
@@ -20,8 +21,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Wild Jacks Online',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const GameHomePage(), // din oprindelige hjemmeside
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      home: const LobbyScreen(),
     );
   }
 }
