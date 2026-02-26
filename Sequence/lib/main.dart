@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'home.dart'; // Import HomePage
-import 'seq.dart'; // Import GameBoard
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
-  // Initialize FFI for sqflite (only for desktop or testing environments)
-  FlutterError.onError = (FlutterErrorDetails details) {
-    FlutterError.presentError(details);
-    print(details.exceptionAsString()); // Log error
-  };
+final supabase = Supabase.instance.client;
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: 'https://kythlberlaurvbgpqfyu.supabase.co',
+    anonKey: 'sb_publishable_i8B9CrYXVnDypTePj-xJtQ_F-IWp2L0',
+  );
   runApp(const MyApp());
 }
 
@@ -18,25 +18,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sequence',
-      debugShowCheckedModeBanner: false, // Hide debug banner
-      initialRoute: '/',
-      routes: <String, WidgetBuilder>{
-        '/': (context) => SequenceGameApp(), // HomePage
-        '/gameboard': (context) => GameBoard(), // GameBoard
-      },
-      onUnknownRoute: (settings) {
-        return MaterialPageRoute(
-          builder: (context) => const Scaffold(
-            body: Center(
-              child: Text('Page not found'),
-            ),
-          ),
-        );
-      },
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
+      title: 'Wild Jacks Online',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const GameHomePage(), // din oprindelige hjemmeside
     );
   }
 }
