@@ -40,4 +40,4 @@ flutter:
   assets:
     - assets/icons/logo.png
     # - assets/icons/splash_logo.png  # Uncomment when you add this file
-    - assets/images/
+    - assets/images/  # Sørg for, at der er billeder i denne mappe
